@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import SnapKit
 
 class SplashViewController: UIViewController {
     private let viewModel = SplashViewModel()
     static let buttonCornerRadius: CGFloat = 5
+
     private let signupButton: UIButton = {
         let signupButton = UIButton()
         signupButton.setTitle("Sign Up", for: .normal)
         signupButton.backgroundColor = .blue
-//        signupButton.layer.borderWidth = 5
+        //        signupButton.layer.borderWidth = 5
         signupButton.layer.cornerRadius = buttonCornerRadius
         return signupButton
     }()
@@ -25,6 +27,16 @@ class SplashViewController: UIViewController {
         loginButton.backgroundColor = .blue
         loginButton.layer.cornerRadius = buttonCornerRadius
         return loginButton
+    }()
+
+    private let logoImage: UIImageView = {
+        let logoImageView = UIImageView()
+        logoImageView.contentMode = .scaleAspectFit
+        logoImageView.clipsToBounds = true
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.image = UIImage(named: "login-secondary-logo")
+        logoImageView.tintColor = .black
+        return logoImageView
     }()
 
     override func viewDidLoad() {
@@ -38,29 +50,38 @@ class SplashViewController: UIViewController {
     }
 
     private func setupUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .green
         view.addSubview(signupButton)
         view.addSubview(loginButton)
+        view.addSubview(logoImage)
     }
 
     private func setupConstraints() {
         signupButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.translatesAutoresizingMaskIntoConstraints = false
 
-        NSLayoutConstraint.activate([
-            signupButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signupButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
-            signupButton.widthAnchor.constraint(equalToConstant: 200),
-            signupButton.heightAnchor.constraint(equalToConstant: 50),
+        logoImage.snp.makeConstraints { make in
+            make.centerX.equalTo(view.snp.centerX)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(200)
+        }
 
-            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 50),
-            loginButton.widthAnchor.constraint(equalToConstant: 200),
-            loginButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        signupButton.snp.makeConstraints { make in
+            make.centerX.equalTo(logoImage.snp.centerX)
+            make.top.equalTo(logoImage.snp.bottom).offset(20)
+            make.width.equalTo(200)
+            make.height.equalTo(50)
+        }
+
+        loginButton.snp.makeConstraints { make in
+            make.centerX.equalTo(logoImage.snp.centerX)
+            make.top.equalTo(signupButton.snp.bottom).offset(20)
+            make.width.equalTo(200)
+            make.height.equalTo(50)
+        }
 
         signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+
     }
 
     @objc private func signupButtonTapped() {

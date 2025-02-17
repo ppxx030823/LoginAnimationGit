@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B27CC56D2D63267E00EE373E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B27CC56C2D63267E00EE373E /* SnapKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		B27CC5322D63154200EE373E /* LoginAnimationGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginAnimationGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B27CC56D2D63267E00EE373E /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = LoginAnimationGit;
 			packageProductDependencies = (
+				B27CC56C2D63267E00EE373E /* SnapKit */,
 			);
 			productName = LoginAnimationGit;
 			productReference = B27CC5322D63154200EE373E /* LoginAnimationGit.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = B27CC5292D63154200EE373E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B27CC56B2D63267E00EE373E /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B27CC5332D63154200EE373E /* Products */;
 			projectDirPath = "";
@@ -337,6 +346,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B27CC56B2D63267E00EE373E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B27CC56C2D63267E00EE373E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B27CC56B2D63267E00EE373E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B27CC52A2D63154200EE373E /* Project object */;
 }
